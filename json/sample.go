@@ -63,7 +63,8 @@ func main() {
     fmt.Printf("Zoo Census:\n\x1B[32m* Gophers: %d\n\x1B[33m* Zebras: %d\n\x1B[0m* Uknown: %d\n", census[Gopher], census[Zebra], census[Unknown])
 
     //Playing with the marshal 
-
+    b, err := json.Marshal(&zoo);
+    fmt.Println(string(b));
 }
 
 

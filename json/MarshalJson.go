@@ -8,10 +8,11 @@ import (
 
 func main() {
     type ColorGroup struct {
-        ID      int     `json:"customId"`
-        Name    string  `json:"grpName,omitempty"`
-        Colors  []string 
-        Ignore  bool    `json:"-"`
+        ID          int     `json:"customId"`
+        Name        string  `json:"grpName,omitempty"`
+        Colors      []string 
+        Ignore      bool    `json:"-"`
+        Int64String int64   `json:",string,omitempty"`
     }
 
     group := ColorGroup { 
@@ -31,6 +32,7 @@ func main() {
         Name: "",
         Colors: []string{"Black", "Gold", "Silver"},
         Ignore: true,
+        Int64String: 65535,
     }
     b2, err := json.Marshal(group2)
     if err != nil {

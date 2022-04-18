@@ -18,4 +18,11 @@ func main() {
     }
 
     fmt.Println(os.Expand("Good ${DAY_PART}, $NAME !!", mapper))
+    /* os.ExpandEnv demo */
+
+    os.Setenv("NAME", "Gopher")
+    os.Setenv("PLACE", "/usr/gopher")
+
+    fmt.Println(os.ExpandEnv("Hi This is $NAME, I live in $PLACE"))
+
 }

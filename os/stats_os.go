@@ -8,6 +8,10 @@ import (
 
 
 func main() {
+    
+    var GREEN string = "\x1B[32m"
+    var RESET string = "\x1B[0m"
+
     /* get environment variable array */
     env_array := os.Environ()
     fmt.Println(env_array)
@@ -23,6 +27,15 @@ func main() {
     os.Setenv("NAME", "Asta")
     os.Setenv("SQUAD", "Black bulls")
 
-    fmt.Printf("I am %s and I am from %s", os.Getenv("NAME"), os.Getenv("SQUAD"))
+    fmt.Printf("I am %s and I am from %s\n", os.Getenv("NAME"), os.Getenv("SQUAD"))
 
+    /* Effective Group id */
+    egid := os.Getegid()
+
+    fmt.Printf("%s[*] Effective Group ID: %d\n%s", GREEN, egid, RESET)
+    
+    /* Effective user id */
+    euid := os.Geteuid()
+
+    fmt.Printf("%s[*] Effective user ID: %d%s",GREEN, euid, RESET)
 }

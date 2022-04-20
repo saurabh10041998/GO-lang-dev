@@ -11,6 +11,7 @@ func main() {
     
     var GREEN string = "\x1B[32m"
     var RESET string = "\x1B[0m"
+    var YELLOW string = "\x1B[33m"
 
     /* get environment variable array */
     env_array := os.Environ()
@@ -38,4 +39,17 @@ func main() {
     euid := os.Geteuid()
 
     fmt.Printf("%s[*] Effective user ID: %d%s",GREEN, euid, RESET)
+
+    /* Group id */
+    gid := os.Getgid()
+    
+    fmt.Printf("\n%s[*] Group id: %d%s", GREEN, gid, RESET)
+
+    /* Groups */
+    fmt.Printf("\n%s[+] Groups : %s", YELLOW, RESET)
+    grps, err := os.Getgroups()
+
+    for _, x := range grps {
+        fmt.Println(x)
+    }
 }

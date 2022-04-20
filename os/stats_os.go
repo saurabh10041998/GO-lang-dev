@@ -45,11 +45,26 @@ func main() {
     
     fmt.Printf("\n%s[*] Group id: %d%s", GREEN, gid, RESET)
 
-    /* Groups */
-    fmt.Printf("\n%s[+] Groups : %s", YELLOW, RESET)
+    /* Groups to which user belngs*/
+    fmt.Printf("\n%s[+] Groups : \n%s", YELLOW, RESET)
     grps, err := os.Getgroups()
 
+    if err != nil {
+        log.Fatal(err)
+    }
     for _, x := range grps {
         fmt.Println(x)
     }
+
+    /* Getting the page size */
+    pgSz := os.Getpagesize()
+
+    fmt.Printf("\n%s[+] Page size: %d%s\n", GREEN, pgSz, RESET)
+
+    /* Getting parent proc id */
+    ppid := os.Getppid()
+
+    fmt.Printf("\n%s[+] Parent process id %d%s\n", GREEN, ppid, RESET)
+
+
 }

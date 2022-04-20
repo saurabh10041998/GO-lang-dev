@@ -59,12 +59,21 @@ func main() {
     /* Getting the page size */
     pgSz := os.Getpagesize()
 
-    fmt.Printf("\n%s[+] Page size: %d%s\n", GREEN, pgSz, RESET)
+    fmt.Printf("\n%s[*] Page size: %d%s", GREEN, pgSz, RESET)
+
+    /* Proc id */
+    pid := os.Getpid()
+    fmt.Printf("\n%s[*] Process id: %d%s", GREEN, pid, RESET)
 
     /* Getting parent proc id */
     ppid := os.Getppid()
 
-    fmt.Printf("\n%s[+] Parent process id %d%s\n", GREEN, ppid, RESET)
-
-
+    fmt.Printf("\n%s[*] Parent process id %d%s", GREEN, ppid, RESET)
+    
+    /*  Current working directory */
+    cwd, err := os.Getwd()
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("\n%s[*] Current working directory: %s%s", GREEN, cwd, RESET)
 }
